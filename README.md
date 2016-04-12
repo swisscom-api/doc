@@ -6,5 +6,5 @@ API Documentation you can find under: <a href="https://github.com/swisscom-api/d
 
 ### Examples 
 
-1. [Smart SMS](examples/mesages/smartSms.md)
+1. [Smart SMS](examples/messages/smartSms.md)
 2. [Voice VoIP Examples](examples/voice/voip/voice_voip_v1.md)
