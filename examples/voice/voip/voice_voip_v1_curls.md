@@ -1,80 +1,93 @@
 ## <a id='overview'>Voice VoIP Curl Examples</a> 
 
-### <a id='overview'>SMS</a>
-<h3>List calls</h3>
-<code>
-curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/123/calls
-</code>
+<p class="note">
+   <strong>Note</strong>: <a href="https://rawgit.com/wiki/swisscom-api/doc/API_docs/voice/voice_voip_v1.html" target="_blank">Voice VoIP API Documentation</a>
+</p>
 
-<h3>Initiate a call</h3>
-<code>
-curl -X POST -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/123/calls
-</code>
+### <a id='overview'>/voice/v1/voip/{id}/phoneNumbers/{phoneNumber}/calls </a>
 
-<h3>List phonebook entries</h3>
-<code>
-curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/123/phonebooks
-</code>
+1. GET - Call history list
+```
+curl -ik -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/123/calls
+```
 
-<h3>List VoIP group numbers</h3>
-<code>
-curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" https://api.swisscom.com/voice/v1/voip/me/numbers
-</code>
+2. POST - Initiate an call
+```
+curl -ik-X POST -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/123/calls
+```
 
-<h3>VoIP call forwardings</h3>
-<h3>GET</h3>
-<code>
-curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -X GET -ik "https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/%USER_PHONE_NUMBER%/forwardings"
-</code>
+### <a id='overview'>/voice/v1/voip/{id}/phoneNumbers/{phoneNumber}/phonebooks </a>
 
-<h3>PUT</h3>
-<code>
-curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -H "Content-Type:application/json" -X GET -ik "https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/%USER_PHONE_NUMBER%/forwardings/busy"  -d "{\"active\": true, \"target\": \"0795481252\"}"
-</code>
+1. GET - Phonebook entries
+```
+curl -ik -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/123/phonebooks
+```
 
-<h3>VoIP Simultaneous rings </h3>
-<h3>GET</h3>
-<code>
-curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -H "Content-Type:application/json" -X GET -ik "https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/%USER_PHONE_NUMBER%/simrings"
-</code>
+### <a id='overview'>/voice/v1/voip/{id}/numbers </a>
 
-<h3>PUT</h3>
-<code>
+1. GET - Voice VoIP numbers list
+```
+curl -ik -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" https://api.swisscom.com/voice/v1/voip/me/numbers
+```
+
+### <a id='overview'>/voice/v1/voip/{id}/phoneNumbers/{phoneNumber}/forwardings </a>
+
+1. GET - Current settings for the call forwarding of a specified phone number 
+```
+curl -ik -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -X GET -ik "https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/%USER_PHONE_NUMBER%/forwardings"
+```
+
+2. PUT - Set the call forwarding configuration of a specific type
+```
+curl -ik -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -H "Content-Type:application/json" -X PUT -ik "https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/%USER_PHONE_NUMBER%/forwardings/busy"  -d "{\"active\": true, \"target\": \"0795481252\"}"
+```
+
+### <a id='overview'>/voice/v1/voip/{id}/phoneNumbers/{phoneNumber}/simrings </a>
+
+1. GET - The list of phone numbers, which ring simultaneously
+
+```
+curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -H "Content-Type:application/json" -X DELETE -ik "https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/%USER_PHONE_NUMBER%/simrings"
+```
+
+2. PUT  - Set a list of phone numbers, which ring simultaneously
+```
 curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -H "Content-Type:application/json" -X PUT -ik "https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/%USER_PHONE_NUMBER%/simrings" -d "[\"%PHONE_NUMMER%\"]"
-</code>
+```
 
-<h3>PATCH</h3>
-<code>
+3. PATCH - Allows adding new phone numbers to the resource, which shall ring simultaneously.
+```
 curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -H "Content-Type:application/json" -X PATCH -ik "https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/%USER_PHONE_NUMBER%/simrings" -d "[\"%PHONE_NUMMER%\"]"
-</code>
+```
 
-<h3>DELETE</h3>
-<code>
+4. DELETE - Delete all simRing entries
+```
 curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -H "Content-Type:application/json" -X DELETE-ik "https://api.swisscom.com/voice/v1/voip/me/phoneNumbers/%USER_PHONE_NUMBER%/simrings"
-</code>
+```
 
-<h3>VoIP events subscriptions</h3>
-<h3>GET</h3>
-<code>
+### <a id='overview'>/voice/v1/voip/{id}/events/subscriptions </a>
+
+1. GET - Retrieve all subscriptions for requesting user.
+```
 curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -X GET -ik "https://api.swisscom.com/voice/v1/voip/me/events/subscriptions"
-</code>
+```
 
-<h3>POST</h3>
-<code>
+2. POST - Create a new subscription.
+```
 curl -k -H 'Authorization: Bearer %ACCESSTOKEN_GOES_HERE%' -H 'Accept:application/json' -X POST -ik 'https://api.swisscom.com/voice/v1/voip/me/events/subscriptions' -d '{"eventType":"voip-call-log-change","callback":{"url":"http://www.swisscom.com/fcl","authorization":"Bearer ABC1"},"targets":[{"type":"phoneNumber","value":"%USER_PHONE_NUMBER%"}]}'
-</code>
+```
 
-<h3>GET /{subscriptionId}</h3>
-<code>
+3. GET - Retrieve a subscription by id.
+```
 curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -X GET -ik "https://api.swisscom.com/voice/v1/voip/me/events/subscriptions\ %SUBSCRIPTIONS_ID%"
-</code>
+```
 
-<h3>PUT /{subscriptionId}</h3>
-<code>
+4. PUT - Edit a given subscription.
+```
 curl -k -H 'Authorization: Bearer %ACCESSTOKEN_GOES_HERE%' -H 'Accept:application/json' -X PUT -ik 'https://api.swisscom.com/voice/v1/voip/me/events/subscriptions/%SUBSCRIPTIONS_ID%' -d '{"eventType":"voip-call-log-change","callback":{"url":"http://www.swisscom.com/fcl","authorization":"Bearer ABC1"},"targets":[{"type":"phoneNumber","value":"%USER_PHONE_NUMBER%"}]}'
-</code>
+```
 
-<h3>DELETE /{subscriptionId}</h3>
-<code>
+5. DELETE - Delete event subscription.
+```
 curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -X DELETE -ik "https://api.swisscom.com/voice/v1/voip/me/events/subscriptions\ %SUBSCRIPTIONS_ID%"
-</code>
+```

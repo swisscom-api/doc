@@ -1,5 +1,13 @@
 ## <a id='overview'>Curl Examples</a> 
 
+<p class="note">
+ <strong>Note: API Documentation</strong>
+ <ul>
+ <li><a href="https://rawgit.com/wiki/swisscom-api/doc/API_docs/messaging/messaging_sms_v1.html" target="_blank">Messaging SMS</a> </li>
+ <li><a href="https://rawgit.com/wiki/swisscom-api/doc/API_docs/messaging/messaging_tokenvalidation_v1.html" target="_blank">Messaging Token Validation</a></li>
+ </ul>
+</p>
+
 ### <a id='overview'>SMS</a>
 
 1. Send SMS (POST)
