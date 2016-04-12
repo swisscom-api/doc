@@ -77,6 +77,7 @@ curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:applicatio
 curl -k -H 'Authorization: Bearer %ACCESSTOKEN_GOES_HERE%' -H 'Accept:application/json' -X POST -ik 'https://api.swisscom.com/voice/v1/voip/me/events/subscriptions' -d '{"eventType":"voip-call-log-change","callback":{"url":"http://www.swisscom.com/fcl","authorization":"Bearer ABC1"},"targets":[{"type":"phoneNumber","value":"%USER_PHONE_NUMBER%"}]}'
 ```
 
+#### <a id='overview'>/voice/v1/voip/{id}/events/subscriptions/{subscriptionId} </a>
 * GET - Retrieve a subscription by id.
 ```
 curl -k -H "Authorization: Bearer %ACCESSTOKEN_GOES_HERE%" -H "Accept:application/json" -X GET -ik "https://api.swisscom.com/voice/v1/voip/me/events/subscriptions\ %SUBSCRIPTIONS_ID%"
