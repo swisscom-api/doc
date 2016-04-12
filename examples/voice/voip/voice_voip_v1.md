@@ -3,13 +3,13 @@
 It is a simple java application which shows how the following resources works:
 
 * **/voice/v1/voip/{id}/phoneNumbers/{phoneNumber}/phonebooks**
-    * GET - get phonebooks 
+    * GET - get phone books 
 * **/voice/v1/voip/{id}/phoneNumbers/{phoneNumber}/calls** - 
     * GET . get call history of a customers phone
 * **/voice/v1/voip/{id}/phoneNumbers/{phoneNumber}/calls** 
-    * POST - iniciates an call
+    * POST - initiates an call
 * **/voice/v1/voip/{id}/phoneNumbers/{phoneNumber}/forwardings**
-    * GET - get curent settings for the call forwarding of a specified phone number
+    * GET - get current settings for the call forwarding of a specified phone number
     * PUT - set the call forwarding configuration of a specific type
     * DELETE - delete all forwarding entries 
 
@@ -19,7 +19,7 @@ It is a simple java application which shows how the following resources works:
 
 ## How to configured your clientId/consumerSecret
 
-In order to set up your client_id and consumer_secret which has been assigned to your developer accoun, you have to change the two following properties under: **{glassfish4Path}\glassfish\domains\domain1\applications\voipapis\application.properties**
+In order to set up your client_id and consumer_secret which has been assigned to your developer account, you have to change the two following properties under: **{glassfish4Path}\glassfish\domains\domain1\applications\voipapis\application.properties**
 
 *   **local.consent_client_id**
 *   **local.consent_auth_header** (encoded with base64 - client_id:consumer_secret)
